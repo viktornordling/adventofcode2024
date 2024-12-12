@@ -121,6 +121,7 @@ for line in wrongs:
     # print(f"Handling line: {line}")
     pages_to_print = [int(x) for x in line.split(",")]
     fixed = sorted(pages_to_print, key=cmp_to_key(compare))
+    print(f"Incorrect sort order: {pages_to_print}, correct:{fixed}")
     # print(f"Fixed: {fixed}")
     total += fixed[len(fixed) // 2]
 

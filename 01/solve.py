@@ -1,10 +1,16 @@
 from collections import Counter
 
 file = open("easy.txt", "r")
+lines = file.readlines()
+
+for i, line in enumerate(lines):
+    nums = [int(x) for x in line.split()]
+    for j, num in enumerate(nums):
+        print(f"The {j + 1}th number on line {i + 1} is {num}")
+
 total = 0
 list1 = []
 list2 = []
-lines = file.readlines()
 for line in lines:
     nums = [int(x) for x in line.strip().split()]
     list1.append(nums[0])
