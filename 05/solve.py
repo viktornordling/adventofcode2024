@@ -1,7 +1,7 @@
 from collections import deque
 from functools import cmp_to_key
 
-lines = open('input.txt', 'r').read()
+lines = open('input_dane.txt', 'r').read()
 parts = lines.split("\n\n")
 rules = parts[0].split("\n")
 prints = parts[1].split("\n")
@@ -121,7 +121,7 @@ for line in wrongs:
     # print(f"Handling line: {line}")
     pages_to_print = [int(x) for x in line.split(",")]
     fixed = sorted(pages_to_print, key=cmp_to_key(compare))
-    print(f"Incorrect sort order: {pages_to_print}, correct:{fixed}")
+    # print(f"Incorrect sort order: {pages_to_print}, correct:{fixed}")
     # print(f"Fixed: {fixed}")
     total += fixed[len(fixed) // 2]
 

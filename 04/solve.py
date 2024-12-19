@@ -71,7 +71,9 @@ print_cells(rows, cols)
 for y in range(rows):
     line = lines[y]
     for x in range(cols):
-        total += find_words(x, y)
+        current = get_cell(x, y)
+        if current == "X":
+            total += find_words(x, y)
 
 print("Part 1: ", total)
 
