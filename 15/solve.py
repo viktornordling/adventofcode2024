@@ -308,9 +308,6 @@ for line in path:
             for x in range(cols * 2):
                 cur = get_new_cell(x, y)
                 left = get_new_cell(x - 1, y)
-                if cur == ']' and not left == '[':
-                    print(f"fucked after {step_count} steps")
-                    print("Fuuuuuuuck")
 
         time.sleep(0.01)
 
