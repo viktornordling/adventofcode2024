@@ -46,11 +46,6 @@ def find_words(x, y):
         return 0
     dirs = [(-1, 0), (1, 0), (0, -1), (0, 1), (1, 1), (-1, -1), (-1, 1), (1, -1)]
 
-    # S A M X
-
-    # x = 5
-    # y = 5
-
     word = "XMAS"
     words_found = 0
     for dir in dirs:
@@ -59,9 +54,7 @@ def find_words(x, y):
         match = True
         while index < 4:
             cur = (cur[0] + dir[0], cur[1] + dir[1])
-            # cur = (2, 5)
             cur_char = get_cell(cur[0], cur[1])
-            # cur_char = 'S'
             if cur_char != word[index]:
                 match = False
                 break
@@ -74,7 +67,6 @@ def find_words(x, y):
 
 
 print_cells(rows, cols)
-# print(f"Cell at x = 3, y = 0: {cells[(3, 0)]}")
 
 for y in range(rows):
     line = lines[y]
