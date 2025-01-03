@@ -22,6 +22,7 @@ for y in range(rows):
         elif cur == 'E':
             goal = (x, y, 'N')
 
+
 class PriorityQueue:
     def __init__(self):
         self.elements = []
@@ -34,6 +35,7 @@ class PriorityQueue:
 
     def get(self):
         return heapq.heappop(self.elements)[1]
+
 
 def dijkstra(start, goal, grid):
     open_set = PriorityQueue()
@@ -74,7 +76,8 @@ def dijkstra(start, goal, grid):
             total += 1
 
     print("Total:", total)
-    return prev, cost_so_far  # Return the prev dictionary and the cost dic
+    return prev, cost_so_far
+
 
 def get_neighbors(current, grid):
     neighbors = []
@@ -87,11 +90,13 @@ def get_neighbors(current, grid):
         neighbors.append(turned_pos)
     return neighbors
 
+
 def cost(current, neighbor):
     if current[2] == neighbor[2]:
         return 1
     else:
         return 1000
+
 
 def print_cells():
     for y in range(rows):
@@ -100,9 +105,11 @@ def print_cells():
             print(cur, end="")
         print()
 
+
 def is_valid(node, grid):
     pos = (node[0], node[1])
     return pos in grid and not grid[pos] == '#'
+
 
 def move(current):
     x, y, facing = current
@@ -115,6 +122,7 @@ def move(current):
     elif facing == 'W':
         return x - 1, y, facing
 
+
 def get_turns(facing):
     if facing == 'N':
         return ['E', 'W']
@@ -124,6 +132,7 @@ def get_turns(facing):
         return ['E', 'W']
     elif facing == 'W':
         return ['N', 'S']
+
 
 def dfs_paths(prev, start, goal):
     stack = [(goal, [goal])]
@@ -135,29 +144,12 @@ def dfs_paths(prev, start, goal):
         if vertex == start:
             all_nodes.update(path)
 
-        # dirs = [(vertex[0], vertex[1], 'N'), (vertex[0], vertex[1], 'E'), (vertex[0], vertex[1], 'S'), (vertex[0], vertex[1], 'W')]
-        # a = cost_so_far.get(dirs[0], math.inf)
-        # b = cost_so_far.get(dirs[1], math.inf)
-        # c = cost_so_far.get(dirs[2], math.inf)
-        # d = cost_so_far.get(dirs[3], math.inf)
-
-        # nexts = []
-
-        # min_cost = min(a, b, c, d)
-        # if min_cost == 0:
-        #     all_nodes.update(path)
-        # for dir in dirs:
-        #     if cost_so_far.get(dir, math.inf) == min_cost:
-        #         prevlist = prev.get(dir, [])
-        #         for pr in prevlist:
-        #             nexts.append(pr)
-
         for next in prev.get(vertex, []):
             if next not in path:
                 stack.append((next, path + [next]))
     return all_nodes
 
-# Example usage:
+
 prev, cost_so_far = dijkstra(start, goal, cells)
 
 dirs = [(goal[0], goal[1], 'N'), (goal[0], goal[1], 'E'), (goal[0], goal[1], 'S'), (goal[0], goal[1], 'W')]

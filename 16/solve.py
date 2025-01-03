@@ -110,7 +110,6 @@ def print_cells():
         print()
 
 
-
 def determine_direction(node, goal):
     dx = goal[0] - node[0]
     dy = goal[1] - node[1]
@@ -125,6 +124,7 @@ def calculate_turns(current_direction, goal_direction):
     current_index = directions.index(current_direction)
     goal_index = directions.index(goal_direction)
     return min(abs(goal_index - current_index), 4 - abs(goal_index - current_index))
+
 
 def reconstruct_path(came_from, start, goal):
     path = []
